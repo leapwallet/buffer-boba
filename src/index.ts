@@ -2,10 +2,9 @@ export type {
   AminoConverter,
   AminoConverters,
   GeneratedEntry,
-  GeneratedRegistry,
-  Module
+  GeneratedRegistry
 } from './supported-modules'
 
 export { Registry } from './registry'
-export { MsgConverter as Converter } from './msg-converter'
+export { MsgConverter } from './msg-converter'
 export { DirectSignDocDecoder } from './decoder'

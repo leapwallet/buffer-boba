@@ -14,7 +14,7 @@ export const convertToProtoFactory = (
 ): ProtoFactory => {
   return {
     ...generatedType,
-    toJSON: (message: object) => {
+    toJSON: (message: any) => {
       return Object.fromEntries(
         Object.entries(message).map(([key, value]) => {
           return [convertCamelCaseToSnakeCase(key), value]

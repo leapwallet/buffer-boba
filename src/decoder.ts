@@ -7,21 +7,24 @@ import {
 } from './codec'
 import { convertToProtoFactory } from './util'
 
-type TxBody = ReturnType<typeof cosmos.tx.v1beta1.TxBody.decode>
-type AuthInfo = ReturnType<typeof cosmos.tx.v1beta1.AuthInfo.decode>
-type SignDoc = ReturnType<typeof cosmos.tx.v1beta1.SignDoc.decode>
+export type TxBody = ReturnType<typeof cosmos.tx.v1beta1.TxBody.decode>
+export type AuthInfo = ReturnType<typeof cosmos.tx.v1beta1.AuthInfo.decode>
+export type SignDoc = ReturnType<typeof cosmos.tx.v1beta1.SignDoc.decode>
 
+/**
+ *
+ */
 export class DirectSignDocDecoder {
   public static decode(bytes: Uint8Array): DirectSignDocDecoder {
     return new DirectSignDocDecoder(cosmos.tx.v1beta1.SignDoc.decode(bytes))
   }
 
-  protected _txBody?: TxBody
-  protected _authInfo?: AuthInfo
+  private _txBody: TxBody | null = null
+  private _authInfo: AuthInfo | null = null
 
   constructor(
     public readonly signDoc: SignDoc,
-    protected readonly protoCodec: ProtoCodec = defaultProtoCodec
+    private readonly protoCodec: ProtoCodec = defaultProtoCodec
   ) {}
 
   get txBody(): TxBody {
@@ -58,7 +61,7 @@ export class DirectSignDocDecoder {
     return cosmos.tx.v1beta1.SignDoc.encode(this.signDoc).finish()
   }
 
-  toJSON(): object {
+  toJSON(): any {
     return {
       txBody: {
         ...convertToProtoFactory(cosmos.tx.v1beta1.TxBody).toJSON(this.txBody),

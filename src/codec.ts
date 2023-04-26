@@ -33,7 +33,7 @@ export interface ProtoFactory {
   encode: (message: any, writer?: Writer) => Writer
   decode: (r: Reader | Uint8Array, l?: number) => any
   fromJSON: (object: any) => any
-  toJSON: (message: any) => object
+  toJSON: (message: any) => any
 }
 
 export class ProtoCodec {

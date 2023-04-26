@@ -11,8 +11,3 @@ export interface AminoConverter {
 }
 
 export type AminoConverters = Record<string, AminoConverter>
-
-export interface Module {
-  registry: GeneratedRegistry
-  AminoConverter: AminoConverters
-}

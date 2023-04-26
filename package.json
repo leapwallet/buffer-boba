@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "@cosmjs/proto-signing": "0.30.1",
+    "long": "5.2.0",
     "osmojs": "15.2.1",
     "protobufjs": "7.2.3",
     "stridejs": "0.6.2"

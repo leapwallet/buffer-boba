@@ -33,7 +33,7 @@ export class MsgConverter {
     msg: any
   ): {
     typeUrl: string
-    value: object
+    value: any
   } | null {
     const sdk = aminoType.split('/')[0]
     switch (sdk) {
