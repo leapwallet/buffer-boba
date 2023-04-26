@@ -1,0 +1,63 @@
+{
+  "name": "@leapwallet/buffer-boba",
+  "description": "Buffer Boba is a library for decoding protocol buffers in the cosmos ecosystem.",
+  "version": "0.0.0",
+  "repository": "https://github.com/leapwallet/buffer-boba",
+  "author": "Leap Wallet",
+  "license": "MIT",
+  "type": "module",
+  "source": "src/index.ts",
+  "keywords": [
+    "cosmos",
+    "protocol-buffer",
+    "encoding",
+    "decoding",
+    "buffer"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.es.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "run-s build:*",
+    "build:lib": "vite build",
+    "build:types": "tsc",
+    "lint": "eslint src",
+    "dev": "run-p watch:*",
+    "test": "vitest",
+    "coverage": "vitest --coverage"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.54.1",
+    "@typescript-eslint/parser": "5.54.1",
+    "@vitest/coverage-c8": "0.29.2",
+    "eslint": "8.36.0",
+    "npm-run-all": "4.1.5",
+    "typescript": "4.9.5",
+    "vite": "4.1.4",
+    "vitest": "0.29.2"
+  },
+  "dependencies": {
+    "@cosmjs/proto-signing": "0.30.1",
+    "osmojs": "15.2.1",
+    "protobufjs": "7.2.3",
+    "stridejs": "0.6.2"
+  },
+  "peerDependencies": {
+    "@cosmjs/proto-signing": "0.30.1",
+    "osmojs": "15.2.1",
+    "protobufjs": "7.2.3",
+    "stridejs": "0.6.2"
+  },
+  "resolutions": {
+    "long": "5.2.0"
+  }
+}
