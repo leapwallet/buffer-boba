@@ -1,0 +1,39 @@
+---
+title: "Message Converters"
+---
+
+## Message Converters
+
+Message Converters are used to convert between Amino JSON objects and their corresponding Protobuf objects. The Amino converters are used by the Amino codec to encode and decode Amino JSON objects.
+
+### `MsgConverter`
+
+#### convertFromAminoToDirect
+
+```ts
+const aminoMsg = {
+  type: 'cosmos-sdk/MsgSend',
+  value: {
+    from_address: 'cosmos1huydeevpz37sd9snkgul6070mstupukw00xkw9',
+    to_address: 'cosmos1cxlt8kzn6amtdxsj4xu0kz47hcvsuf4rwpqj7c',
+    amount: [
+      {
+        denom: 'uatom',
+        amount: '1000000'
+      }
+    ]
+  }
+}
+
+MsgConverter.convertFromAminoToDirect(aminoMsg.type, aminoMsg.value)
+```
+
+#### convertFromDirectToAmino
+
+```ts
+const directMsg = {
+  // ...
+}
+
+MsgConverter.convertFromDirectToAmino(directMsg['@typeUrl'], ...directMsg.value)
+```

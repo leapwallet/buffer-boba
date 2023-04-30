@@ -1,0 +1,213 @@
+---
+title: "Decoder"
+---
+
+The primary purpose of the library is to decode the SignDoc received from dApps. We provide a couple of ways to do so.
+
+## DirectSignDocDecoder
+
+This class is the simplest way to decode a SignDoc. You can use it in the following way:
+
+### get JSON data
+
+```ts
+import { DirectSignDocDecoder } from "@leapwallet/buffer-boba";
+
+// signDoc is the SignDoc received from dApps
+const signDoc = {}
+
+// decoder is the instance of DirectSignDocDecoder
+const decoder = new DirectSignDocDecoder(signDoc);
+
+// decoded to-be txn data
+const jsonPayload = decoder.toJSON();
+```
+
+Here the argument is a `SignDoc` object defined inside [`cosmos.tx.v1beta1.SignDoc`](https://github.com/cosmos/cosmos-sdk/blob/cb1641c1b5f844190723f34db7f73b85c8d43580/proto/cosmos/tx/v1beta1/tx.proto#L49). It looks like this:
+
+```ts
+interface SignDoc {
+    /**
+     * body_bytes is protobuf serialization of a TxBody that matches the
+     * representation in TxRaw.
+     */
+    bodyBytes: Uint8Array;
+    /**
+     * auth_info_bytes is a protobuf serialization of an AuthInfo that matches the
+     * representation in TxRaw.
+     */
+    authInfoBytes: Uint8Array;
+    /**
+     * chain_id is the unique identifier of the chain this transaction targets.
+     * It prevents signed transactions from being used on another chain by an
+     * attacker
+     */
+    chainId: string;
+    /** account_number is the account number of the account in state */
+    accountNumber: Long;
+}
+```
+
+We have another method called `decode` on the `DirectSignDocDecoder` class which returns the decoded payload as a `Uint8Array`. You can use it in the following way:
+
+```ts
+import { DirectSignDocDecoder } from "@leapwallet/buffer-boba";
+
+// signDoc is the SignDoc received from dApps
+const signDoc = new Uint8Array([/* ... */]);
+
+// decoder is the instance of DirectSignDocDecoder
+const decoder = DirectSignDocDecoder.decodeBytes(signDoc);
+
+// decoded to-be txn data
+const jsonPayload = decoder.toJSON();
+```
+
+### Methods
+
+#### `constructor`
+
+```ts
+constructor(signDoc: SignDoc, protoCodec?: ProtoCodec): DirectSignDocDecoder
+```
+
+The constructor takes in a `SignDoc` object and an optional [`ProtoCodec`](./codec) object. The `ProtoCodec` object is used to decode the messages in txBody. If not provided, it will use the `defaultProtoCodec` object.
+
+#### `toJSON`
+
+```ts
+toJSON(): { txBody: TxBody, authInfo: AuthInfo, chainId: string, accountNumber: string }
+```
+
+This method returns the decoded payload as an object.
+
+#### `decodeBytes`
+
+```ts
+static decodeBytes(signDoc: Uint8Array, protoCodec?: ProtoCodec): DirectSignDocDecoder
+```
+
+This method takes in a `SignDoc` object as a `Uint8Array` and an optional [`ProtoCodec`](./codec) object. The `ProtoCodec` object is used to decode the messages in txBody. If not provided, it will use the `defaultProtoCodec` object.
+
+#### `toBytes`
+
+```ts
+toBytes(): Uint8Array
+```
+
+This method returns the SignDoc as a `Uint8Array`.
+
+### Properties
+
+#### `txBody`
+
+```ts
+txBody: TxBody
+```
+
+This property returns the decoded `TxBody` object.
+
+```ts
+/** TxBody is the body of a transaction that all signers sign over. */
+interface TxBody {
+    /**
+     * messages is a list of messages to be executed. The required signers of
+     * those messages define the number and order of elements in AuthInfo's
+     * signer_infos and Tx's signatures. Each required signer address is added to
+     * the list only the first time it occurs.
+     * By convention, the first required signer (usually from the first message)
+     * is referred to as the primary signer and pays the fee for the whole
+     * transaction.
+     */
+    messages: Any[];
+    /**
+     * memo is any arbitrary note/comment to be added to the transaction.
+     * WARNING: in clients, any publicly exposed text should not be called memo,
+     * but should be called `note` instead (see https://github.com/cosmos/cosmos-sdk/issues/9122).
+     */
+    memo: string;
+    /**
+     * timeout is the block height after which this transaction will not
+     * be processed by the chain
+     */
+    timeoutHeight: Long;
+    /**
+     * extension_options are arbitrary options that can be added by chains
+     * when the default options are not sufficient. If any of these are present
+     * and can't be handled, the transaction will be rejected
+     */
+    extensionOptions: Any[];
+    /**
+     * extension_options are arbitrary options that can be added by chains
+     * when the default options are not sufficient. If any of these are present
+     * and can't be handled, they will be ignored
+     */
+    nonCriticalExtensionOptions: Any[];
+}
+```
+
+#### `txMsgs`
+
+```ts
+txMsgs: AnyWithUnpacked[]
+```
+
+Returns the messages in the `TxBody` object.
+
+```ts
+type Any = {
+    typeUrl: string;
+    value: Uint8Array;
+};
+
+type AnyWithUnpacked = Any | (Any & { unpacked: unknown; toJSON: () => any });
+```
+
+Any is a protocol buffer message defined here - https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/any.proto
+
+#### `authInfo`
+
+```ts
+authInfo: AuthInfo
+```
+
+This property returns the decoded `AuthInfo` object.
+
+```ts
+/**
+ * AuthInfo describes the fee and signer modes that are used to sign a
+ * transaction.
+ */
+export interface AuthInfo {
+    /**
+     * signer_infos defines the signing modes for the required signers. The number
+     * and order of elements must match the required signers from TxBody's
+     * messages. The first element is the primary signer and the one which pays
+     * the fee.
+     */
+    signerInfos: SignerInfo[];
+    /**
+     * Fee is the fee and gas limit for the transaction. The first signer is the
+     * primary signer and the one which pays the fee. The fee can be calculated
+     * based on the cost of evaluating the body and doing signature verification
+     * of the signers. This can be estimated via simulation.
+     */
+    fee?: Fee;
+}
+```
+
+#### `chainId`
+
+```ts
+chainId: string
+```
+
+This property returns the chain ID.
+
+#### `accountNumber`
+
+```ts
+accountNumber: string
+```
+
+This property returns the account number.

@@ -1,0 +1,91 @@
+---
+title: "Proto Codec"
+---
+
+Proto Codec - short of Protocol Buffer codec is basically a mapping for supported message types. It is used to decode protocol buffer messages. It is used alongside [DirectSignDecoder](./decoder).
+
+## `ProtoCodec`
+
+### `Methods`
+
+#### registerType
+
+```ts
+registerType(typeUrl: string, generatedType: GeneratedType): void
+```
+
+Registers a new message type to the codec. The `typeUrl` is the type url of the message and `generatedType` is a [GeneratedType](https://cosmos.github.io/cosmjs/latest/proto-signing/modules.html#GeneratedType). It basically means, when a message with `typeUrl` is received, the codec will use the `generatedType` to decode the message.
+
+
+#### unpackAny
+
+```ts
+unpackAny(any: Any): AnyWithUnpacked
+```
+
+Unpacks an `Any` message. It will return an `AnyWithUnpacked` object which contains the unpacked message and the `typeUrl` of the message. You can access the unpacked message using `message` property and the factory via the related factory property.
+
+This method will return an `UnknownMessage` type if the message is not registered in the codec.
+
+## `ProtoFactory`
+
+A `ProtoFactory` is an interface that is expected by the ProtoCodec in order to decode a message successfully.
+
+```ts
+interface ProtoFactory {
+  encode: (message: any, writer?: Writer) => Writer
+  decode: (r: Reader | Uint8Array, l?: number) => any
+  fromJSON: (object: any) => any
+  toJSON: (message: any) => any
+}
+```
+
+## Usage
+
+In order to register a new generated type in the default codec, you need to do the following -
+
+```ts
+import { defaultProtoCodec, convertToProtoFactory } from '@leapwallet/buffer-boba';
+import { sdkName } from 'some-library';
+
+defaultProtoCodec.registerProtoFactory(sdkName.someMessage.typeUrl, convertToProtoFactory(sdkName.someMessage));
+```
+
+The `convertToProtoFactory` function will convert the generated message to a `ProtoFactory` that is expected by the codec. Basically, it will add the `fromJSON` and `toJSON` methods to the object.
+
+Now this updated codec can be used in the [DirectSignDecoder](./decoder) to decode the messages in the following manner -
+  
+```ts
+// signDoc is a SignDoc object
+// defaultProtoCodec is the updated defaultProtoCodec object
+const decoder = new DirectSignDecoder(signDoc, defaultProtoCodec);
+```
+
+You can use this decoder for your custom use-cases.
+
+## UnknownMessage
+
+The `UnknownMessage` class is one that implements the Any interface. It represents an unknown message type that cannot be deserialized into a known message type.
+
+### `Constructor`
+
+The UnknownMessage class has a constructor that takes two parameters:
+
+- `_typeUrl`: a string representing the URL of the message type.
+- `_value`: a Uint8Array representing the serialized message.
+
+### Getters
+
+The UnknownMessage class has two getters:
+
+- `typeUrl`: a string representing the URL of the message type.
+- `value`: a Uint8Array representing the serialized message.
+
+### Methods
+
+#### toJSON
+
+The UnknownMessage class has a toJSON method that returns a JSON representation of the message. It returns an object with two properties:
+
+- `type_url`: a string representing the URL of the message type.
+- `value`: a base64-encoded string representing the serialized message.

@@ -1,0 +1,35 @@
+---
+title: "Getting Started"
+---
+
+import { Tab, Tabs } from 'nextra-theme-docs'
+
+## Motivation
+
+At leapwallet, we believe that we should give cosmos users the best wallet experience. An integral part of the wallet is its transaction signing page as that is the way users interact with dApps on the chain. Users sign transactions on this page and we want the users to be able to see what they are signing off on. We want to show a transaction overview, descriptions of all the messages and the data in JSON format.
+
+To do this, we need the protocol buffer definitions of all the messages in the transaction. However, there is no standard way to get the protocol buffer definitions of the messages in a transaction. This is where _Buffer Boba_ comes in. It is a javascript library that allows you to decode the Protocol Buffer data in a standard way.
+
+This is a simple and easy to use library that allows you to decode the protocol buffer data in a transaction. 
+
+## Installation
+
+You can use your favourtie package manager to install the library
+
+<Tabs items={['yarn', 'npm', 'pnpm']}>
+  <Tab>
+    ```bash
+    yarn add @leapwallet/buffer-boba
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    npm install @leapwallet/buffer-boba
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    pnpm add @leapwallet/buffer-boba
+    ```
+  </Tab>
+</Tabs>

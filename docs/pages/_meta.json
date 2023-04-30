@@ -1,0 +1,20 @@
+{
+  "index": {
+    "title": "Introduction",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
+  },
+  "docs": {
+    "title": "Documentation",
+    "type": "page"
+  },
+  "demo": {
+    "title": "Demo",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
+  }
+}
