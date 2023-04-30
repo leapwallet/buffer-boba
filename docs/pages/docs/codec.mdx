@@ -45,10 +45,10 @@ interface ProtoFactory {
 In order to register a new generated type in the default codec, you need to do the following -
 
 ```ts
-import { defaultProtoCodec, convertToProtoFactory } from '@leapwallet/buffer-boba';
+import { defaultProtoCode } from '@leapwallet/buffer-boba';
 import { sdkName } from 'some-library';
 
-defaultProtoCodec.registerProtoFactory(sdkName.someMessage.typeUrl, convertToProtoFactory(sdkName.someMessage));
+defaultProtoCodec.registerProtoFactory(sdkName.someMessage.typeUrl, sdkName.someMessage.generatedType);
 ```
 
 The `convertToProtoFactory` function will convert the generated message to a `ProtoFactory` that is expected by the codec. Basically, it will add the `fromJSON` and `toJSON` methods to the object.
