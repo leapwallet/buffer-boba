@@ -51,4 +51,28 @@ export class MsgConverter {
         return null
     }
   }
+
+  public static convertFromDirectToAmino(
+    typeUrl: string,
+    msg: any
+  ): Record<string, any> | null {
+    if (typeUrl in cosmosAminoConverters) {
+      // @ts-expect-error not sure
+      return cosmosAminoConverters[typeUrl].toAmino(msg)
+    } else if (typeUrl in ibcAminoConverters) {
+      // @ts-expect-error not sure
+      return ibcAminoConverters[typeUrl].toAmino(msg)
+    } else if (typeUrl in osmosisAminoConverters) {
+      // @ts-expect-error not sure
+      return osmosisAminoConverters[typeUrl].toAmino(msg)
+    } else if (typeUrl in cosmwasmAminoConverters) {
+      // @ts-expect-error not sure
+      return cosmwasmAminoConverters[typeUrl].toAmino(msg)
+    } else if (typeUrl in strideAminoConverters) {
+      // @ts-expect-error not sure
+      return strideAminoConverters[typeUrl].toAmino(msg)
+    } else {
+      return null
+    }
+  }
 }

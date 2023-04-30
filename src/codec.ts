@@ -1,3 +1,4 @@
+import { GeneratedType } from '@cosmjs/proto-signing'
 import { Any } from 'osmojs/types/codegen/google/protobuf/any'
 import { Writer, Reader } from 'protobufjs'
 import { Registry } from './registry'
@@ -54,8 +55,12 @@ export class ProtoCodec {
     }
   }
 
-  registerProtoFactory(typeUrl: string, message: ProtoFactory): void {
-    this.codecRegistry[typeUrl] = message
+  registerType(typeUrl: string, generatedType: GeneratedType): void {
+    this.codecRegistry[typeUrl] = convertToProtoFactory(generatedType)
+  }
+
+  listSupportedTypes(): string[] {
+    return Object.keys(this.codecRegistry)
   }
 }
 
@@ -63,12 +68,6 @@ export const defaultProtoCodec = new ProtoCodec()
 
 Registry.default()
   .getAllGeneratedTypes()
-  .map(([typeUrl, generatedType]) => {
-    return [typeUrl, convertToProtoFactory(generatedType)] satisfies [
-      string,
-      ProtoFactory
-    ]
-  })
-  .forEach(([typeUrl, protoFactory]) => {
-    defaultProtoCodec.registerProtoFactory(typeUrl, protoFactory)
+  .forEach(([typeUrl, generatedType]) => {
+    defaultProtoCodec.registerType(typeUrl, generatedType)
   })

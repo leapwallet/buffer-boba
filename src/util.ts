@@ -1,5 +1,6 @@
 import { GeneratedType } from '@cosmjs/proto-signing'
 import { ProtoFactory } from './codec'
+import { cosmos } from 'osmojs'
 
 export const convertCamelCaseToSnakeCase = (key: string): string => {
   return key.replace(/([A-Z])/g, '_$1').toLowerCase()
@@ -25,4 +26,8 @@ export const convertToProtoFactory = (
       return generatedType.encode(object).finish()
     }
   }
+}
+
+export const decodeSignDoc = (bytes: Uint8Array) => {
+  return cosmos.tx.v1beta1.SignDoc.decode(bytes)
 }
