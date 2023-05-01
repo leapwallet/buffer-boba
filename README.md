@@ -18,9 +18,13 @@ To know more about the library, check out the [Docs](https://leapwallet.github.i
 
 We support the following SDKs -
 
-<!-- TODO: add info here -->
+1. cosmos
+2. osmosis
+3. cosmwasm
+4. ibc
+5. stride
 
-We also allow you to add your definitions for enhanced use-cases. You can look at the docs for the same [here](https://leapwallet.github.io/name-matcha/docs/advanced#custom-definitions).
+We also allow you to add your definitions for enhanced use-cases. You can look at the docs for the same [here](https://leapwallet.github.io/buffer-boba/docs/codec#usage).
 
 ## Release Process
 

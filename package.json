@@ -1,7 +1,7 @@
 {
   "name": "@leapwallet/buffer-boba",
   "description": "Buffer Boba is a library for decoding protocol buffers in the cosmos ecosystem.",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": "https://github.com/leapwallet/buffer-boba",
   "author": "Leap Wallet",
   "license": "MIT",
