@@ -6,14 +6,11 @@ on:
       - published
 
 jobs:
-  release:
+  test:
     runs-on: ubuntu-latest
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     steps:
-      - name: 🛑 Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
-      
       - name: ⬇️ Checkout Repo
         uses: actions/checkout@v3
 
@@ -27,10 +24,36 @@ jobs:
       - name: 📥 Install Dependencies
         run: yarn install
       
-      - name: 🏗️ Build Library
-        run: yarn build
-
-      - name: 📤 Publish Package
+      - name: 🧪 Run Tests
+        run: yarn test
+  
+  publish-npm-registry:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn
+      - run: yarn build
+      - run: yarn publish
         env:
-          NEW_VERSION: ${{ github.ref_name }}
-        run: yarn publish --non-interactive --no-git-tag-version --registry="https://registry.npmjs.org/" --scope="@leapwallet" --new-version=${NEW_VERSION:1}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+  
+  publish-github-registry:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@leapwallet'
+      - run: yarn
+      - run: yarn build
+      - run: yarn publish --non-interactive
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
