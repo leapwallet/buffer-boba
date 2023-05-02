@@ -7,7 +7,7 @@ import {
 } from 'osmojs'
 import { strideProtoRegistry } from 'stridejs'
 
-import { GeneratedEntry, GeneratedRegistry } from './supported-modules'
+import type { GeneratedEntry, GeneratedRegistry } from './supported-modules'
 
 const registries = [
   cosmosProtoRegistry,

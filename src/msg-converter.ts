@@ -6,7 +6,7 @@ import {
 } from 'osmojs'
 import { strideAminoConverters } from 'stridejs'
 
-import { AminoConverters } from './supported-modules'
+import type { AminoConverters } from './supported-modules'
 
 const convertFromModuleGroup = (
   msg: any,
