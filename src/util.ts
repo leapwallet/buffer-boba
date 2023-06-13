@@ -17,8 +17,15 @@ export const convertObjectCasingFromCamelToSnake = (
   const msgKeys = Object.keys(record)
   const convertedMsg = msgKeys.reduce((acc, key) => {
     const convertedKey = convertCamelCaseToSnakeCase(key)
-    const value = record[key]
-    if (typeof value === 'object' && value !== null) {
+    const value = record[key] 
+
+    if(Array.isArray(value)){
+      return {
+        ...acc,
+        [convertedKey]: value.map(element => convertObjectCasingFromCamelToSnake(element))
+      }
+    }
+    if (typeof value === 'object' && value !== null) { 
       return {
         ...acc,
         [convertedKey]: convertObjectCasingFromCamelToSnake(value)
