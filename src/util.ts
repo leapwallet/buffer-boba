@@ -18,6 +18,12 @@ export const convertObjectCasingFromCamelToSnake = (
   const convertedMsg = msgKeys.reduce((acc, key) => {
     const convertedKey = convertCamelCaseToSnakeCase(key)
     const value = record[key] 
+    if(value instanceof Date){
+      return {
+        ...acc,
+        [convertedKey]: value
+      }
+    }
 
     if(Array.isArray(value)){
       return {
