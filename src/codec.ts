@@ -50,7 +50,7 @@ export class ProtoCodec {
 
     return {
       ...any,
-      unpacked,
+      unpacked: { typeUrl: any.typeUrl, ...unpacked },
       factory
     }
   }
