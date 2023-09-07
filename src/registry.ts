@@ -3,7 +3,7 @@ import {
   cosmosProtoRegistry,
   osmosisProtoRegistry,
   ibcProtoRegistry,
-  cosmwasmProtoRegistry
+  cosmwasmProtoRegistry,
 } from 'osmojs'
 import { strideProtoRegistry } from 'stridejs'
 

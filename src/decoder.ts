@@ -91,9 +91,15 @@ export class DirectSignDocDecoder {
           if ('factory' in msg) {
             const json = msg.factory.toJSON(msg.unpacked)
             if (json.msg instanceof Uint8Array) {
-              json.msg = base64js.fromByteArray(json.msg)
+              const base64String = base64js.fromByteArray(json.msg)
+              const decodedString = Buffer.from(base64String, 'base64').toString() 
+              try {
+                const decodedJson = JSON.parse(decodedString)
+                json.msg = decodedJson
+              }catch{
+                json.msg = decodedString
+              } 
             }
-
             return json
           }
           return msg
