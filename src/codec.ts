@@ -1,8 +1,8 @@
 import { GeneratedType } from '@cosmjs/proto-signing'
-import { Any } from 'osmojs/types/codegen/google/protobuf/any'
 import { Writer, Reader } from 'protobufjs'
 import { Registry } from './registry'
 import { convertToProtoFactory } from './util'
+import { Any } from 'osmojs/dist/codegen/google/protobuf/any'
 
 export type AnyWithUnpacked =
   | Any
