@@ -46,19 +46,20 @@
     "vitest": "0.29.2"
   },
   "dependencies": {
-    "@cosmjs/proto-signing": "0.30.1",
+    "@cosmjs/proto-signing": "0.31.3",
     "base64js": "1.0.1",
-    "cosmjs-types": "0.8.0",
+    "cosmjs-types": "0.9.0",
     "long": "5.2.0",
-    "osmojs": "15.2.1",
-    "protobufjs": "7.2.3",
+    "osmojs": "16.5.1",
+    "protobufjs": "7.2.5",
     "stridejs": "0.6.2"
   },
   "peerDependencies": {
-    "@cosmjs/proto-signing": "0.30.1",
-    "osmojs": "15.2.1",
-    "protobufjs": "7.2.3",
-    "stridejs": "0.6.2"
+    "@cosmjs/proto-signing": "0.31.x",
+    "osmojs": "16.5.x",
+    "protobufjs": "7.2.x",
+    "stridejs": "0.6.2",
+    "long": "5.2.x"
   },
   "resolutions": {
     "long": "5.2.0"
