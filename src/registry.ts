@@ -3,9 +3,9 @@ import {
   cosmosProtoRegistry,
   osmosisProtoRegistry,
   ibcProtoRegistry,
-  cosmwasmProtoRegistry,
-} from 'osmojs'
-import { strideProtoRegistry } from 'stridejs'
+  cosmwasmProtoRegistry
+} from './proto/osmojs'
+import { strideProtoRegistry } from './proto/stridejs'
 
 import type { GeneratedEntry, GeneratedRegistry } from './supported-modules'
 

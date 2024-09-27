@@ -3,8 +3,8 @@ import {
   osmosisAminoConverters,
   ibcAminoConverters,
   cosmwasmAminoConverters
-} from 'osmojs'
-import { strideAminoConverters } from 'stridejs'
+} from './proto/osmojs'
+import { strideAminoConverters } from './proto/stridejs'
 
 import type { AminoConverters } from './supported-modules'
 
