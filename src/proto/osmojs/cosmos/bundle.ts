@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-
+//@ts-nocheck
 import * as _0 from './ics23/v1/proofs'
 import * as _3 from './auth/v1beta1/auth'
 import * as _6 from './auth/v1beta1/tx'
@@ -107,22 +107,22 @@ export namespace cosmos {
       ..._254
     }
   }
-}
-export namespace tx {
-  export namespace signing {
+  export namespace tx {
+    export namespace signing {
+      export const v1beta1 = {
+        ..._64
+      }
+    }
     export const v1beta1 = {
-      ..._64
+      ..._66
     }
   }
-  export const v1beta1 = {
-    ..._66
-  }
-}
-export namespace upgrade {
-  export const v1beta1 = {
-    ..._69,
-    ..._70,
-    ..._247,
-    ..._255
+  export namespace upgrade {
+    export const v1beta1 = {
+      ..._69,
+      ..._70,
+      ..._247,
+      ..._255
+    }
   }
 }
