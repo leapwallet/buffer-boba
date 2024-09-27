@@ -42,7 +42,7 @@ jobs:
       - run: yarn build
       - run: yarn publish --non-interactive --no-git-tag-version --new-version=${NEW_VERSION:1}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   
   publish-github-registry:
     needs: [test]
