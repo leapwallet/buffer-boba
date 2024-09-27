@@ -5,7 +5,7 @@ import {
   ibcProtoRegistry,
   cosmwasmProtoRegistry
 } from './proto/osmojs'
-import { strideProtoRegistry } from 'stridejs'
+import { strideProtoRegistry } from './proto/stridejs'
 
 import type { GeneratedEntry, GeneratedRegistry } from './supported-modules'
 

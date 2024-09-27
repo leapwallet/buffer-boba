@@ -4,7 +4,7 @@ import {
   ibcAminoConverters,
   cosmwasmAminoConverters
 } from './proto/osmojs'
-import { strideAminoConverters } from 'stridejs'
+import { strideAminoConverters } from './proto/stridejs'
 
 import type { AminoConverters } from './supported-modules'
 
