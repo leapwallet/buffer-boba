@@ -1,6 +1,6 @@
 import { GeneratedType } from '@cosmjs/proto-signing'
 import { ProtoFactory } from './codec'
-import { cosmos } from 'osmojs'
+import { cosmos } from './proto/osmojs'
 import { SignDoc } from './decoder'
 
 export const convertCamelCaseToSnakeCase = (key: string): string => {

@@ -1,6 +1,6 @@
 import { DirectSignDocDecoder } from './decoder'
 import Long from 'long'
-import { cosmos, cosmwasm } from 'osmojs'
+import { cosmos, cosmwasm } from './proto/osmojs'
 import { stride } from 'stridejs'
 import { assert, describe, expect, it } from 'vitest'
 

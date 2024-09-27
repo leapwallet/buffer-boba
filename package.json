@@ -50,16 +50,14 @@
     "base64js": "1.0.1",
     "cosmjs-types": "0.9.0",
     "long": "5.2.0",
-    "osmojs": "16.5.1",
     "protobufjs": "7.2.5",
     "stridejs": "0.6.2"
   },
   "peerDependencies": {
     "@cosmjs/proto-signing": "0.31.x",
-    "osmojs": "16.5.x",
+    "long": "5.2.x",
     "protobufjs": "7.2.x",
-    "stridejs": "0.6.2",
-    "long": "5.2.x"
+    "stridejs": "0.6.2"
   },
   "resolutions": {
     "long": "5.2.0"
