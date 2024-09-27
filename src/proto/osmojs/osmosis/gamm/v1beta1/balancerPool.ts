@@ -2,12 +2,12 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-nocheck
-import { Timestamp } from 'cosmjs-types/google/protobuf/timestamp'
+import { Timestamp } from '../../../../google/protobuf/timestamp'
 import {
   Duration,
   DurationAmino,
   DurationSDKType
-} from 'cosmjs-types/google/protobuf/duration'
+} from '../../../../google/protobuf/duration'
 import { Coin, CoinAmino, CoinSDKType } from '../../../cosmos/base/v1beta1/coin'
 import { BinaryReader, BinaryWriter } from '../../../../binary'
 import { toTimestamp, fromTimestamp } from '../../../../helpers'

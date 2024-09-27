@@ -4,7 +4,7 @@
 //@ts-nocheck
 import { Proof, ProofAmino, ProofSDKType } from '../crypto/proof'
 import { Consensus, ConsensusAmino, ConsensusSDKType } from '../version/types'
-import { Timestamp } from 'cosmjs-types/google/protobuf/timestamp'
+import { Timestamp } from '../../../google/protobuf/timestamp'
 import {
   ValidatorSet,
   ValidatorSetAmino,

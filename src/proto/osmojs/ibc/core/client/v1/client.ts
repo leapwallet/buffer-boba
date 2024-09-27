@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-nocheck
-import { Any, AnyAmino, AnySDKType } from 'cosmjs-types/google/protobuf/any'
+import { Any, AnyAmino, AnySDKType } from '../../../../../google/protobuf/any'
 import {
   Plan,
   PlanAmino,

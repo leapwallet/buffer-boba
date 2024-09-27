@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-nocheck
-import { Any, AnyAmino, AnySDKType } from 'cosmjs-types/google/protobuf/any'
+import { Any, AnyAmino, AnySDKType } from '../../../../google/protobuf/any'
 import { BinaryReader, BinaryWriter } from '../../../../binary'
 import { GlobalDecoderRegistry } from '../../../registry'
 import { bytesFromBase64, base64FromBytes } from '../../../../helpers'

@@ -8,7 +8,7 @@ import {
   QueryConditionSDKType
 } from '../lockup/lock'
 import { Coin, CoinAmino, CoinSDKType } from '../../cosmos/base/v1beta1/coin'
-import { Timestamp } from 'cosmjs-types/google/protobuf/timestamp'
+import { Timestamp } from '../../../google/protobuf/timestamp'
 import { BinaryReader, BinaryWriter } from '../../../binary'
 import { toTimestamp, fromTimestamp } from '../../../helpers'
 import { GlobalDecoderRegistry } from '../../registry'

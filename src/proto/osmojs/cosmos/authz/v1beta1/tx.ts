@@ -8,7 +8,7 @@ import {
   AnyProtoMsg,
   AnyAmino,
   AnySDKType
-} from 'cosmjs-types/google/protobuf/any'
+} from '../../../../google/protobuf/any'
 import { BinaryReader, BinaryWriter } from '../../../../binary'
 import { GlobalDecoderRegistry } from '../../../registry'
 import { bytesFromBase64, base64FromBytes } from '../../../../helpers'

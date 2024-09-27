@@ -8,13 +8,13 @@ import {
   AnyProtoMsg,
   AnyAmino,
   AnySDKType
-} from 'cosmjs-types/google/protobuf/any'
-import { Timestamp } from 'cosmjs-types/google/protobuf/timestamp'
+} from '../../../../google/protobuf/any'
+import { Timestamp } from '../../../../google/protobuf/timestamp'
 import {
   Duration,
   DurationAmino,
   DurationSDKType
-} from 'cosmjs-types/google/protobuf/duration'
+} from '../../../../google/protobuf/duration'
 import {
   ClientUpdateProposal,
   ClientUpdateProposalProtoMsg,

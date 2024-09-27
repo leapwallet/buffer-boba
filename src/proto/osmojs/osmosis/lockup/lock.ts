@@ -6,8 +6,8 @@ import {
   Duration,
   DurationAmino,
   DurationSDKType
-} from 'cosmjs-types/google/protobuf/duration'
-import { Timestamp } from 'cosmjs-types/google/protobuf/timestamp'
+} from '../../../google/protobuf/duration'
+import { Timestamp } from '../../../google/protobuf/timestamp'
 import { Coin, CoinAmino, CoinSDKType } from '../../cosmos/base/v1beta1/coin'
 import { BinaryReader, BinaryWriter } from '../../../binary'
 import { toTimestamp, fromTimestamp, isSet } from '../../../helpers'

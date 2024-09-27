@@ -7,7 +7,7 @@
  */
 
 import { BinaryReader } from '../binary'
-import { Any, AnyAmino } from 'cosmjs-types/google/protobuf/any'
+import { Any, AnyAmino } from '../google/protobuf/any'
 import { IProtoType, TelescopeGeneratedCodec } from './types'
 
 export class GlobalDecoderRegistry {

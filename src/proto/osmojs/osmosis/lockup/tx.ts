@@ -6,7 +6,7 @@ import {
   Duration,
   DurationAmino,
   DurationSDKType
-} from 'cosmjs-types/google/protobuf/duration'
+} from '../../../google/protobuf/duration'
 import { Coin, CoinAmino, CoinSDKType } from '../../cosmos/base/v1beta1/coin'
 import { PeriodLock, PeriodLockAmino, PeriodLockSDKType } from './lock'
 import { BinaryReader, BinaryWriter } from '../../../binary'

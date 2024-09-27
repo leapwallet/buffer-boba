@@ -55,7 +55,7 @@ import {
   writeByte,
   zzDecode,
   zzEncode
-} from './varint'
+} from './stridejs/codegen/varint'
 
 export enum WireType {
   Varint = 0,

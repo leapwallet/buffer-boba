@@ -2,7 +2,7 @@ import { GeneratedType } from '@cosmjs/proto-signing'
 import { Writer, Reader } from 'protobufjs'
 import { Registry } from './registry'
 import { convertToProtoFactory } from './util'
-import { Any } from 'cosmjs-types/google/protobuf/any'
+import { Any } from './proto/google/protobuf/any'
 
 export type AnyWithUnpacked =
   | Any

@@ -7,18 +7,18 @@ import {
   HeaderAmino,
   HeaderSDKType
 } from '../../../tendermint/types/types'
-import { Timestamp } from 'cosmjs-types/google/protobuf/timestamp'
+import { Timestamp } from '../../../../google/protobuf/timestamp'
 import {
   Any,
   AnyProtoMsg,
   AnyAmino,
   AnySDKType
-} from 'cosmjs-types/google/protobuf/any'
+} from '../../../../google/protobuf/any'
 import {
   Duration,
   DurationAmino,
   DurationSDKType
-} from 'cosmjs-types/google/protobuf/duration'
+} from '../../../../google/protobuf/duration'
 import { Coin, CoinAmino, CoinSDKType } from '../../base/v1beta1/coin'
 import {
   ValidatorUpdate,

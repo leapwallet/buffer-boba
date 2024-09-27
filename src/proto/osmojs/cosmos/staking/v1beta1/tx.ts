@@ -18,9 +18,9 @@ import {
   AnyProtoMsg,
   AnyAmino,
   AnySDKType
-} from 'cosmjs-types/google/protobuf/any'
+} from '../../../../google/protobuf/any'
 import { Coin, CoinAmino, CoinSDKType } from '../../base/v1beta1/coin'
-import { Timestamp } from 'cosmjs-types/google/protobuf/timestamp'
+import { Timestamp } from '../../../../google/protobuf/timestamp'
 import { BinaryReader, BinaryWriter } from '../../../../binary'
 import { encodePubkey, decodePubkey } from '@cosmjs/proto-signing'
 import { GlobalDecoderRegistry } from '../../../registry'

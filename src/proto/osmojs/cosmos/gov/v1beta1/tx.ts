@@ -7,7 +7,7 @@ import {
   AnyProtoMsg,
   AnyAmino,
   AnySDKType
-} from 'cosmjs-types/google/protobuf/any'
+} from '../../../../google/protobuf/any'
 import { Coin, CoinAmino, CoinSDKType } from '../../base/v1beta1/coin'
 import {
   VoteOption,

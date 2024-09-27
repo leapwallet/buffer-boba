@@ -7,7 +7,7 @@ import {
   CompactBitArrayAmino,
   CompactBitArraySDKType
 } from '../../../crypto/multisig/v1beta1/multisig'
-import { Any, AnyAmino, AnySDKType } from 'cosmjs-types/google/protobuf/any'
+import { Any, AnyAmino, AnySDKType } from '../../../../../google/protobuf/any'
 import { BinaryReader, BinaryWriter } from '../../../../../binary'
 import { GlobalDecoderRegistry } from '../../../../registry'
 import { isSet, bytesFromBase64, base64FromBytes } from '../../../../../helpers'

@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-nocheck
-import { Timestamp } from 'cosmjs-types/google/protobuf/timestamp'
-import { Any, AnyAmino, AnySDKType } from 'cosmjs-types/google/protobuf/any'
+import { Timestamp } from '../../../../google/protobuf/timestamp'
+import { Any, AnyAmino, AnySDKType } from '../../../../google/protobuf/any'
 import { BinaryReader, BinaryWriter } from '../../../../binary'
 import { toTimestamp, fromTimestamp } from '../../../../helpers'
 import { GlobalDecoderRegistry } from '../../../registry'

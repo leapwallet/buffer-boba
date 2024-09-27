@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-empty-interface */
 //@ts-nocheck
-import { Timestamp } from 'cosmjs-types/google/protobuf/timestamp'
+import { Timestamp } from '../../../../google/protobuf/timestamp'
 import { BinaryReader, BinaryWriter } from '../../../../binary'
 import { toTimestamp, fromTimestamp } from '../../../../helpers'
 import { Decimal } from '@cosmjs/math'

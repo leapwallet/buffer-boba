@@ -10,7 +10,7 @@ import {
   VersionAmino,
   VersionSDKType
 } from './connection'
-import { Any, AnyAmino, AnySDKType } from 'cosmjs-types/google/protobuf/any'
+import { Any, AnyAmino, AnySDKType } from '../../../../../google/protobuf/any'
 import {
   Height,
   HeightAmino,

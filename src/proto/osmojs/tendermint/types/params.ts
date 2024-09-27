@@ -6,7 +6,7 @@ import {
   Duration,
   DurationAmino,
   DurationSDKType
-} from 'cosmjs-types/google/protobuf/duration'
+} from '../../../google/protobuf/duration'
 import { BinaryReader, BinaryWriter } from '../../../binary'
 import { GlobalDecoderRegistry } from '../../registry'
 /**
