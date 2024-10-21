@@ -334,6 +334,33 @@ function createBaseAny(): Any {
 }
 export const Any = {
   typeUrl: '/google.protobuf.Any',
+  is(object: any): object is Any {
+    return (
+      object &&
+      (object.$typeUrl === Any.typeUrl ||
+        (typeof object.typeUrl === 'string' &&
+          (object.value instanceof Uint8Array ||
+            typeof object.value === 'string')))
+    )
+  },
+  isSDK(object: any): object is AnySDKType {
+    return (
+      object &&
+      (object.$typeUrl === Any.typeUrl ||
+        (typeof object.type_url === 'string' &&
+          (object.value instanceof Uint8Array ||
+            typeof object.value === 'string')))
+    )
+  },
+  isAmino(object: any): object is AnyAmino {
+    return (
+      object &&
+      (object.$typeUrl === Any.typeUrl ||
+        (typeof object.type === 'string' &&
+          (object.value instanceof Uint8Array ||
+            typeof object.value === 'string')))
+    )
+  },
   encode(
     message: Any,
     writer: BinaryWriter = BinaryWriter.create()
